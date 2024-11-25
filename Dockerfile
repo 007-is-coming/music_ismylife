@@ -8,7 +8,7 @@ WORKDIR /app/music_ismylife
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# 4. Django 애플리케이션 소스 코드 복사
+# 4. Django 애플리케이션 소스 코드 복사 (secrets.json 포함)
 COPY . .
 
 # 5. Django의 기본 포트 8000을 노출
