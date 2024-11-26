@@ -6,7 +6,7 @@ import time
 
 def index(request):
     daily_songs = DailySongs.objects.all()
-    daily_playlists = DailyPlaylists.objects.all()[:10]
+    daily_playlists = DailyPlaylists.objects.all()
 
     print(f"Daily Songs count: {daily_songs.count()}")
     print(f"Daily Playlists count: {daily_playlists.count()}")
