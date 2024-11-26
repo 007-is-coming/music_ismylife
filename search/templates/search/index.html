@@ -27,7 +27,7 @@
                     {% endfor %}
                 </div>
             {% endif %}
-
+    
             <div class="form-row">
                 <div class="checkbox-group">
                     <!-- YouTube 체크박스 -->
@@ -60,11 +60,19 @@
                 {% if daily_songs %}
                     {% for song in daily_songs %}
                         <div class="scroll-item">
+                            {% if song.platform == 'youtube' %}
+                            <a href="https://www.youtube.com/watch?v={{ song.song_url }}" target="_blank">
+                                <img src="{{ song.thumbnail }}" alt="{{ song.song_title }}" class="thumbnail">
+                                <p class="song-title">{{ song.song_title }}</p>
+                            </a>
+                            <p class="platform-label youtube">YouTube</p>
+                            {% else %}
                             <a href="{{ song.song_url }}" target="_blank">
                                 <img src="{{ song.thumbnail }}" alt="{{ song.song_title }}" class="thumbnail">
                                 <p class="song-title">{{ song.song_title }}</p>
-                                <p class="song-platform">{{ song.platform }}</p>
                             </a>
+                            <p class="platform-label spotify">Spotify</p>
+                            {% endif %}                                                 
                         </div>
                     {% endfor %}
                 {% else %}
@@ -81,9 +89,8 @@
                     {% for playlist in daily_playlists %}
                         <div class="scroll-item">
                             <a href="{{ playlist.playlist_url }}" target="_blank">
-                                <img src="{{ playlist.thumbnail }}" alt="Playlist Thumbnail">
-                                <p class="playlist-name">{{ playlist.playlist_title }}</p>
-                                <p class="playlist-platform">{{ playlist.platform }}</p>
+                                <img src="{{ playlist.thumbnail }}" alt="Playlist Thumbnail" class="thumbnail">
+                                <p class="playlist-name.spotify">{{ playlist.playlist_title }}</p>
                             </a>
                         </div>
                     {% endfor %}
